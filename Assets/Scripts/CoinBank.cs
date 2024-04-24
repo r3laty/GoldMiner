@@ -7,6 +7,7 @@ public class CoinBank : MonoBehaviour
 
     [SerializeField] private int goldCount;
     [SerializeField] private TextMeshProUGUI goldCountText;
+    [SerializeField] private TextMeshProUGUI goldCountWinPanelText;
     private void Start()
     {
         if (Instance == null)
@@ -22,5 +23,7 @@ public class CoinBank : MonoBehaviour
     {
         goldCount++;
         goldCountText.text = goldCount.ToString();
+        UpdateGoldCountText();
     }
+    private void UpdateGoldCountWinPanelText() => goldCountWinPanelText.text = goldCount.ToString();
 }

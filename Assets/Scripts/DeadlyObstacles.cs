@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CollisionsHandler : ObjectCollision
+public class DeadlyObstacles: ObjectCollision
 {
     public static event Action CharacterHitted;
     private void OnCollisionEnter2D(Collision2D collision)

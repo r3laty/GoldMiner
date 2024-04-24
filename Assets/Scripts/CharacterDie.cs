@@ -12,7 +12,7 @@ public class CharacterDie : MonoBehaviour
     }
     private void OnEnable()
     {
-        CollisionsHandler.CharacterHitted += OnCharacterDie;
+        DeadlyObstacles.CharacterHitted += OnCharacterDie;
     }
 
     public void OnCharacterDie()
@@ -28,6 +28,6 @@ public class CharacterDie : MonoBehaviour
 
     private void OnDisable()
     {
-        CollisionsHandler.CharacterHitted -= OnCharacterDie;
+        DeadlyObstacles.CharacterHitted -= OnCharacterDie;
     }
 }
