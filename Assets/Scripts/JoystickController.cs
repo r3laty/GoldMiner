@@ -8,58 +8,48 @@ public class JoystickController : MonoBehaviour
     [SerializeField] private Movement player;
     [SerializeField] private Image childImage;
 
-    private Transform _playerTransform;
     private Image _thisImage;
+    
+    private Transform _playerTransform;
     private Color _imageColor;
-    private RectTransform _rectTransform;
     private void Awake()
     {
         _playerTransform = player.transform;
 
         _thisImage = GetComponent<Image>();
-        _rectTransform = GetComponent<RectTransform>();
     }
     private void Start()
     {
-        //TurnJoystick(false);
+        TurnJoystick(false);
     }
 
     private void Update()
     {
+        MoveJoystick();
+
+        ManageTouches();
+    }
+    private void MoveJoystick()
+    {
+        transform.position = _playerTransform.position + (Vector3.down * 1.5f);
+    }
+
+    private void ManageTouches()
+    {
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
             if (touch.phase == TouchPhase.Stationary)
             {
-                print("touch phase stationary");
-                //TurnJoystick(true);
-            }
-            else if (touch.phase == TouchPhase.Began)
-            {
-                print("touch phase began");
-                Vector2 touchPosition = touch.position;
-
-                //Vector2 screenPosition = Camera.main.WorldToScreenPoint(touchPosition);
-
-                //Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-
-                _rectTransform.localPosition = touchPosition;
-                print("Touch position: " + touch.position);
-                print("RectTransform position: " + _rectTransform.localPosition);
-
-
-
+                TurnJoystick(true);
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                print("touch phase ended");
-
-                //TurnJoystick(false);
+                TurnJoystick(false);
             }
         }
-
     }
+
     private void TurnJoystick(bool variant)
     {
         _thisImage.enabled = variant;

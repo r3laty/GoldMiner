@@ -45,7 +45,7 @@ TagManager:
   - name: Background
     uniqueID: 2108007221
     locked: 0
-  - name: Obstracles
+  - name: Obstacle
     uniqueID: 1665468093
     locked: 0
   - name: Rope
